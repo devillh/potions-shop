@@ -41,16 +41,23 @@ router.put("/", async (req: Request, res: Response) => {
     if (req.body == null)
         return (res.status(400).send("Error: Data is empty."))
 
-    //  !! Need to change the way to update
-    //
-    //  const potion = await Potion.find({ id: req.body.id });
-    //
-    //  await potion.save()
-    //    .catch(() => res
-    //        .status(405).json("Error: Potion's update failed.")
-    //        .status(500).json("Error: Connexion to the server failed."));
+    const potion = {
+        id: req.body.id,
+        name: req.body.name,
+        type: req.body.type,
+        desc: req.body.desc,
+        price: req.body.price,
+        img: req.body.img,
+        created: req.body.created,
+        updated: new Date().toLocaleString()
+    };
 
-    return (res.status(200).send("Potion successfully updated."));
+    await Potion.findOneAndUpdate({ id: potion.id }, potion)
+        .catch(() => res
+            .status(405).json("Error: Potion's update failed.")
+            .status(500).json("Error: Connexion to the server failed."));
+
+    return (res.status(200).send(potion));
 });
 
 // Delete a potion
@@ -58,13 +65,12 @@ router.delete("/", async (req: Request, res: Response) => {
     if (!req.body)
         return (res.status(400).send("Error: Data is empty."));
 
-    // !!Doesn't work, need to change
     await Potion.deleteOne({ id: req.body.id })
         .catch(() => res
             .status(405).json("Error: Potion could not be deleted.")
             .status(500).json("Error: Connexion to the server failed."));
 
-    return (res.status(200));
+    return (res.status(200).send("The potion has been deleted."));
 });
 
 export default router;
