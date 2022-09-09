@@ -30,7 +30,7 @@ router.post("/", async (req: Request, res: Response) => {
 
     await potion.save()
         .catch(() => res
-            .status(403).json("Error: Potion's update failed.")
+            .status(403).json("Error: Potion's creation failed.")
             .status(500).json("Error: Connexion to the server failed."));
 
     return (res.status(200).json(potion));

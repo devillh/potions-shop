@@ -16,13 +16,12 @@ const UserSchema : Schema = new Schema({
         required: true,
         lowercase: true
     },
-    desc: {
+    pwd: {
         type: String,
         required: true
     },
     img: {
-        data: Buffer,
-        contentType: String,
+        type: String,
         required: false
     }
 });
