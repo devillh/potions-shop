@@ -1,0 +1,21 @@
+#card-background {
+    background-image: url("../assets/img/background-card.jpg");
+    background-position: center;
+    color: #F2F2F2;
+}
+
+#desc {
+    color:#544673;
+    background-color: rgba(194, 175, 241, 0.7);
+}
+
+.potion-type {
+    position: relative;
+    float: right;
+    margin-top: -2vh;
+}
+
+h4 {
+    color: #3BD99F;
+    margin:0;
+}

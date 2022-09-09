@@ -1,3 +1,30 @@
-.test {
+.background {
+    background-color: rgba(31, 16, 65, 0.38);
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    color: rgb(26, 20, 42);
+}
 
+.spacing-items {
+    display: flex;
+    line-height: 10vh;
+    justify-content: space-between;
+    padding: 0 5vw;
+
+}
+
+.welcome {
+    margin-left: 2vw;
+}
+
+.logo {
+    display: flex;
+}
+
+.logout {
+    display: flex;
+    height: 5vh;
+    margin-top: 2.5vh;
 }

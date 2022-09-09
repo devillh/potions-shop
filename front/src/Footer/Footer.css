@@ -1,0 +1,11 @@
+#footer-bg {
+    top: auto;
+    left:0;
+    bottom: 0;
+    color: #544673;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
