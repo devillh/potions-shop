@@ -19,7 +19,7 @@ function UpdatePotion({allPotions}) {
         const potion = editPotion(index);
         console.log(potion);
         await axios
-            .put("http://127.0.0.1:5000/potions", {
+            .put("http://" + window.location.hostname + ":5000/potions", {
                 id: potion.id,
                 name: potion.name,
                 price: potion.price,

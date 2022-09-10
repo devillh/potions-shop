@@ -39,14 +39,6 @@ services:
     networks:
       - db_link
 
-  front-end:
-    build:
-      context: ./front/
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - 3000:80
-
 volumes:
   mongodb_data:
 
