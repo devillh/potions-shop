@@ -3,7 +3,7 @@ import { ReactComponent as Logo } from "../assets/img/Potions shop logo.svg";
 import { Button } from "@mui/material";
 import React from "react";
 
-function Header({ setConnected }) {
+function Header() {
 
     return (
         <div className="background">

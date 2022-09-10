@@ -12,6 +12,7 @@ services:
     ports:
       - 27017:27017
     volumes:
+      - ./mongo/init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - mongodb_data:/data/db
     networks:
       - db_link
@@ -37,6 +38,14 @@ services:
       - 5000:5000
     networks:
       - db_link
+
+  front-end:
+    build:
+      context: ./front/
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3000:80
 
 volumes:
   mongodb_data:

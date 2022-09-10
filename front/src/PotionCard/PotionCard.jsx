@@ -1,5 +1,5 @@
 import "./PotionCard.css";
-import * as React from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -7,26 +7,21 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 function PotionCard(potion) {
-    const potionsTypes = {
-        "drinking": require("../assets/img/red-potion.png"),
-        "throwing": require("../assets/img/green-potion.png"),
-        "other": require("../assets/img/purple-potion.png")
-    };
-
     return (
-        <div>
+        <div className="card-size">
             <Card sx={{ maxWidth: 345 }}  id="card-background">
                 <CardActionArea>
                     <CardMedia
                         component="img"
                         height="140"
-                        image={require(potion.img)}
+                        image={ potion.img }
                         alt={ potion.name }
                     />
                     <CardContent id="desc">
                         <Typography gutterBottom variant="h5" component="div">
-                            <img src={potionsTypes[potion.type]} width="50vh" alt="Purple potion" className="potion-type"/>
-                            <h4>{ potion.name }</h4>
+                            <img src={require("../assets/img/purple-potion.png")} width="50vh" alt="Purple potion" className="potion-type"/>
+                            <h4>{potion.nb + 1 || 0}. { potion.name }</h4>
+                            <span className="potion-type resize">{ potion.price }$</span>
                         </Typography>
                         <Typography variant="body2">
                             { potion.desc }
@@ -35,12 +30,12 @@ function PotionCard(potion) {
                 </CardActionArea>
                 <CardActions className="actions" id="desc">
                     <div>
-                        <Button size="small" color="primary" disabled="false">
+                        <Button size="small" color="primary" disabled>
                             Buy
                         </Button>
                     </div>
                     <div>
-                        <Button size="small" color="primary">
+                        <Button size="small" color="primary" disabled>
                             Share
                         </Button>
                     </div>

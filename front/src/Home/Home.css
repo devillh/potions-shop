@@ -1,0 +1,28 @@
+.background-home {
+    background-color: #d8d2ec;
+    padding: 5vh 20vh;
+    min-height: 70vh;
+}
+
+.all-cards {
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 25vw;
+    margin: 2.5vh 0;
+}
+
+.grid-create {
+    justify-content: center;
+}
+
+.small-input {
+    margin: 5vh 3vw;
+}
+
+.large-input {
+    margin: 5vh 3vw;
+    width: 42vw;
+}

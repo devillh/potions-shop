@@ -13,13 +13,13 @@ function Login({ setConnected }) {
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;
-        setUser({...user, [name]: value,});
+        setUser({...user, [name]: value});
     };
 
     const handleSubmit = (e) => {
         axios
             .get("http://127.0.0.1:5000/users",
-                { responseType: "json" },)
+                { responseType: "json" })
             .then(res => {
                 setUsers(res.data);
             });

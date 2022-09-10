@@ -44,10 +44,7 @@ router.post("/", async (req: Request, res: Response) => {
         email: req.body.email
     });
 
-    await user.save()
-        .catch(() => res
-            .status(403).json("Error: User creation failed.")
-            .status(500).json("Error: Connexion to the server failed."));
+    await user.save();
 
     return (res.status(200).json(user));
 });

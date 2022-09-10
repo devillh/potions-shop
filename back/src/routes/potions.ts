@@ -9,7 +9,7 @@ router.get("/", async (req: Request, res: Response) => {
 
     if (!allPotions)
         res.status(400).send("Error: Empty data.");
-
+    console.log("ROUTE: ", allPotions)
     return (res.status(200).json(allPotions));
 });
 
@@ -30,8 +30,7 @@ router.post("/", async (req: Request, res: Response) => {
 
     await potion.save()
         .catch(() => res
-            .status(403).json("Error: Potion's creation failed.")
-            .status(500).json("Error: Connexion to the server failed."));
+            .status(403).json("Error: Potion's creation failed."));
 
     return (res.status(200).json(potion));
 });
@@ -54,8 +53,7 @@ router.put("/", async (req: Request, res: Response) => {
 
     await Potion.findOneAndUpdate({ id: potion.id }, potion)
         .catch(() => res
-            .status(405).json("Error: Potion's update failed.")
-            .status(500).json("Error: Connexion to the server failed."));
+            .status(405).json("Error: Potion's update failed."));
 
     return (res.status(200).send(potion));
 });
@@ -64,11 +62,10 @@ router.put("/", async (req: Request, res: Response) => {
 router.delete("/", async (req: Request, res: Response) => {
     if (!req.body)
         return (res.status(400).send("Error: Data is empty."));
-
-    await Potion.deleteOne({ id: req.body.id })
+    console.log(req.body)
+    await Potion.deleteOne({ id: req.body.id }).then(res => console.log(res))
         .catch(() => res
-            .status(405).json("Error: Potion could not be deleted.")
-            .status(500).json("Error: Connexion to the server failed."));
+            .status(405).json("Error: Potion could not be deleted."));
 
     return (res.status(200).send("The potion has been deleted."));
 });

@@ -1,7 +1,7 @@
 #card-background {
     background-image: url("../assets/img/background-card.jpg");
-    background-position: center;
     color: #F2F2F2;
+    position: relative;
 }
 
 #desc {
@@ -18,4 +18,13 @@
 h4 {
     color: #3BD99F;
     margin:0;
+}
+
+.card-size {
+    position: relative;
+}
+
+.resize {
+    margin-top: -4.5vh;
+    color: #7aea1e;
 }
