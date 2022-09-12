@@ -6,14 +6,35 @@ import Button from "@mui/material/Button";
 
 function CreatePotion() {
     const [newPotion, setNewPotion] = useState({name: "", desc: "", price: 0, img: ""});
+    const [errLink, setErrLink] = useState(false);
+    const [errSizeName, setErrSizeName] = useState(false);
     const [err, setErr] = useState(false);
+
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;
         setNewPotion({...newPotion, [name]: value});
+
+        if (e.target.name === "name" && e.target.value.length > 22)
+            setErrSizeName(true);
+        else
+            setErrSizeName(false);
+
+        if (e.target.name === "img" && e.target.value.length > 10) {
+            if (e.target.value.substr(0, 7) === "http://" || e.target.value.substr(0, 8) === "https://")
+                setErrLink(false);
+            else
+                setErrLink(true);
+        }
+
+        e.preventDefault();
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        if (newPotion.name.length < 5 || newPotion.img < 10 || newPotion.desc < 5) {
+            setErr(true);
+        }
+        else {
             await axios
                 .post("http://127.0.0.1:5000/potions", {
                     name: newPotion.name,
@@ -22,10 +43,16 @@ function CreatePotion() {
                     desc: newPotion.desc
                 })
                 .then(res => {
-                    if (res.status !== 200) {
+                    if (res.status === 200) {
+                        setErrSizeName(false);
+                        setErrLink(false);
+                        setErr(false);
+                    } else
                         setErr(true);
-                    }
                 });
+        }
+
+        e.preventDefault();
     }
 
     return(
@@ -35,7 +62,9 @@ function CreatePotion() {
                     <h1>
                         Create a potion
                     </h1>
-                    { err && <span className="error">A value was incorrect, try again please.</span> }
+                    { err && <span className="error">Complete all the form with at least 5 characters and try again please.</span> }
+                    { errLink && <span className="error">Your image is not a link, try again please.</span> }
+                    { errSizeName && <span className="error">The name is too long, please shorten it.</span> }
                 </div>
                 <Grid container alignItems="center" justify="center" className="grid-create">
                     <Grid item>
@@ -94,7 +123,7 @@ function CreatePotion() {
                         </div>
                     </Grid>
                     <div className="small-input">
-                        <Button size="large" variant="contained" color="primary" type="submit">
+                        <Button size="large" variant="contained" color="primary" type="submit" disabled={errLink || errSizeName }>
                             Create
                         </Button>
                     </div>

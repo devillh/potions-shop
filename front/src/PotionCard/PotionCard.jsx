@@ -4,7 +4,9 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { IconButton, Button, CardActionArea, CardActions } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 function PotionCard(potion) {
     return (
@@ -19,27 +21,31 @@ function PotionCard(potion) {
                     />
                     <CardContent id="desc">
                         <Typography gutterBottom variant="h5" component="div">
-                            <img src={require("../assets/img/purple-potion.png")} width="50vh" alt="Purple potion" className="potion-type"/>
+                            <img src={ require("../assets/img/purple-potion.png") } alt="Purple potion" className="potion-type"/>
                             <h4>{potion.nb + 1 || 0}. { potion.name }</h4>
                             <span className="potion-type resize">{ potion.price }$</span>
                         </Typography>
-                        <Typography variant="body2">
-                            { potion.desc }
-                        </Typography>
+                        <div className="desc-overflow">
+                            <Typography variant="body2">
+                                { potion.desc }
+                            </Typography>
+                        </div>
                     </CardContent>
                 </CardActionArea>
-                <CardActions className="actions" id="desc">
+                <CardActions className="actions" id="buttons">
                     <div>
-                        <Button size="small" color="primary" disabled>
+                        <Button size="small" color="primary" aria-label="Buy this potion" disabled>
                             Buy
                         </Button>
                     </div>
                     <div>
-                        <Button size="small" color="primary" disabled>
-                            Share
-                        </Button>
+                        <IconButton size="small" aria-label="Edit this potion" disabled>
+                            <EditIcon />
+                        </IconButton>
+                        <IconButton size="small" aria-label="Delete this potion" onClick={() => potion.setToDelete(potion.nb)}>
+                            <DeleteIcon />
+                        </IconButton>
                     </div>
-
                 </CardActions>
             </Card>
         </div>

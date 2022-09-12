@@ -1,16 +1,17 @@
 .background-home {
     background-color: #d8d2ec;
-    padding: 5vh 20vh;
+    padding: 0 2vw;
     min-height: 70vh;
 }
 
-.all-cards {
+#all-cards {
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .card {
-    width: 25vw;
+    width: 80vw;
     margin: 2.5vh 0;
 }
 
@@ -19,10 +20,46 @@
 }
 
 .small-input {
-    margin: 5vh 3vw;
+    margin: 2vh 2vw;
 }
 
-.large-input {
-    margin: 5vh 3vw;
-    width: 42vw;
+
+
+********************************************************
+
+
+
+@media screen and (min-width: 425px) {
+
+}
+
+@media screen and (min-width: 1024px) {
+    .background-home {
+        background-color: #d8d2ec;
+        padding: 5vh 20vh;
+        min-height: 70vh;
+    }
+
+    .all-cards {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        width: 25vw;
+        margin: 2.5vh 0;
+    }
+
+    .grid-create {
+        justify-content: center;
+    }
+
+    .small-input {
+        margin: 5vh 3vw;
+    }
+
+    .large-input {
+        margin: 5vh 3vw;
+        width: 42vw;
+    }
 }

@@ -9,15 +9,28 @@
     background-color: rgba(194, 175, 241, 0.7);
 }
 
+.desc-overflow {
+    height: 13vh;
+    overflow: auto;
+}
+
+#buttons {
+    background-color: rgba(194, 175, 241, 0.7);
+    justify-content: right;
+}
+
 .potion-type {
     position: relative;
     float: right;
-    margin-top: -2vh;
+    margin: -2vh 0 2vh 0;
+    width: 3vw;
 }
 
 h4 {
     color: #3BD99F;
     margin:0;
+    padding-bottom: 2vh;
+    height: 7vh;
 }
 
 .card-size {
@@ -25,6 +38,10 @@ h4 {
 }
 
 .resize {
-    margin-top: -4.5vh;
+    display: flex;
+    position: absolute;
+    margin: -5vh 0 0 -2vw;
     color: #7aea1e;
+    justify-content: right;
+    width: 100%;
 }
