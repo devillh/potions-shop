@@ -15,11 +15,13 @@ function CreatePotion() {
         const {name, value} = e.target;
         setNewPotion({...newPotion, [name]: value});
 
+        // Check if the name is short enough to fit in the card
         if (e.target.name === "name" && e.target.value.length > 22)
             setErrSizeName(true);
         else
             setErrSizeName(false);
 
+        // Check if the image is a link
         if (e.target.name === "img" && e.target.value.length > 10) {
             if (e.target.value.substr(0, 7) === "http://" || e.target.value.substr(0, 8) === "https://")
                 setErrLink(false);
@@ -31,6 +33,7 @@ function CreatePotion() {
     };
 
     const handleSubmit = async (e) => {
+        // Check if the data is complete before calling the API route
         if (newPotion.name.length < 5 || newPotion.img < 10 || newPotion.desc < 5) {
             setErr(true);
         }
@@ -66,48 +69,51 @@ function CreatePotion() {
                     { errLink && <span className="error">Your image is not a link, try again please.</span> }
                     { errSizeName && <span className="error">The name is too long, please shorten it.</span> }
                 </div>
-                <Grid container alignItems="center" justify="center" className="grid-create">
+                <Grid container alignItems="center" justify="center" className="center-items">
                     <Grid item>
-                        <div className="field small-input">
+                        <div className="form-bg small-input">
                             <TextField
                                 variant="filled"
                                 id="name"
                                 name="name"
                                 label="Name"
                                 type="text"
+                                fullWidth
                                 value={ newPotion.name }
                                 onChange={ handleInputChange }
                             />
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="field small-input">
+                        <div className="form-bg small-input">
                             <TextField
                                 variant="filled"
                                 id="price"
                                 label="Price in dollars"
                                 type="number"
                                 name="price"
+                                fullWidth
                                 value={ newPotion.price }
                                 onChange={ handleInputChange }
                             />
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="field small-input">
+                        <div className="form-bg small-input">
                             <TextField
                                 variant="filled"
                                 id="img"
                                 label="Image's link"
                                 type="text"
                                 name="img"
+                                fullWidth
                                 value={ newPotion.img }
                                 onChange={ handleInputChange }
                             />
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="field large-input">
+                        <div className="form-bg small-input" id="large-input-create">
                             <TextField
                                 variant="filled"
                                 id="desc"
@@ -122,8 +128,8 @@ function CreatePotion() {
                             />
                         </div>
                     </Grid>
-                    <div className="small-input">
-                        <Button size="large" variant="contained" color="primary" type="submit" disabled={errLink || errSizeName }>
+                    <div className="small-input center-items">
+                        <Button size="large" variant="contained" color="primary" type="submit" disabled={ errLink || errSizeName }>
                             Create
                         </Button>
                     </div>

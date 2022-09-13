@@ -10,10 +10,10 @@ function Header() {
             <div className="spacing-items">
                 <div className="logo">
                     <div>
-                        <Logo alt="Logo of Potions Shop" width="5vw" height="5vw" />
+                        <Logo alt="Logo of Potions Shop" width="13vh"/>
                     </div>
                     <div className="welcome">
-                        Welcome to Potions Shop!
+                        Welcome to Potions Shop, the market is open!
                     </div>
                 </div>
                 <div className="logout">

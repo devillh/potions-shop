@@ -57,61 +57,67 @@ function UpdatePotion({allPotions}) {
                     </h1>
                     { err && <span className="error">A value was incorrect, try again please.</span> }
                 </div>
-                <Grid container alignItems="center" justify="center" className="grid-create">
+                <Grid container alignItems="center" justify="center" className="center-items">
                     <Grid item>
-                        <div className="field small-input">
+                        <div className="form-bg small-input">
                             <TextField
                                 variant="filled"
                                 id="index"
                                 label="Potion's number"
                                 type="number"
                                 name="index"
+                                fullWidth
                                 value={ editedPotion.index }
                                 onChange={ handleInputChange }
                             />
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="field small-input">
+                        <div className="form-bg small-input">
                             <TextField
                                 variant="filled"
                                 id="name"
                                 name="name"
                                 label="Name"
                                 type="text"
+                                fullWidth
                                 value={ editedPotion.name }
                                 onChange={ handleInputChange }
                             />
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="field small-input">
+                        <div className="form-bg small-input">
                             <TextField
                                 variant="filled"
                                 id="price"
                                 label="Price in dollars"
                                 type="number"
                                 name="price"
+                                fullWidth
                                 value={ editedPotion.price }
                                 onChange={ handleInputChange }
                             />
                         </div>
                     </Grid>
+                </Grid>
+                <Grid container alignItems="center" justify="center" className="center-items">
                     <Grid item>
-                        <div className="field small-input">
+                        <div className="form-bg small-input">
                             <TextField
                                 variant="filled"
                                 id="img"
                                 label="Image's link"
                                 type="text"
                                 name="img"
+                                fullWidth
                                 value={ editedPotion.img }
                                 onChange={ handleInputChange }
                             />
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="field large-input">
+                        <div className="form-bg small-input" id="large-input-edit">
                             <TextField
                                 variant="filled"
                                 id="desc"
@@ -126,7 +132,7 @@ function UpdatePotion({allPotions}) {
                             />
                         </div>
                     </Grid>
-                    <div className="small-input">
+                    <div className="small-input center-items">
                         <Button size="large" variant="contained" color="primary" type="submit">
                             Update
                         </Button>

@@ -1,11 +1,11 @@
+/* Identifier completing the Header style used for the Footer */
 #footer-bg {
     top: auto;
-    left:0;
     color: #544673;
     display: flex;
     position: absolute;
     justify-content: center;
-    align-content: center;
     align-items: center;
     flex-direction: column;
+    font-size: 0.75rem;
 }

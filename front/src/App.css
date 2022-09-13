@@ -1,3 +1,20 @@
+/* The style should cover all the screen */
 body {
     min-height: 100vh;
+}
+
+/* titles */
+h1 {
+    color: #3BD99F;
+    font-family: Lobster, sans-serif;
+    font-weight: 400;
+    font-size: 3rem;
+}
+
+h3 {
+    color: #8bd0b7;
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 5vh 0 12vh 0;
 }
