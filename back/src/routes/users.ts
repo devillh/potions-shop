@@ -1,26 +1,7 @@
 import { Router, Request, Response } from "express";
 import {  User } from "../utils/models/user";
-import {Potion} from "../utils/models/potion";
 
 const router : Router = Router();
-
-/**
- * @swagger
- * /:
- *   get:
- *     summary: Get the users list.
- *     description: Gets all the users details.
- *     tags: [Users]
- *     responses:
- *       200:
- *         description: OK.
- *         content:
- *           application/json:
- *             name:
- *               type: array
- *               description: An array empty or with User objects.
- *               example: []
- */
 
 // Get all users
 router.get("/", async (req: Request, res: Response) => {

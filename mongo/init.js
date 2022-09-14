@@ -20,7 +20,7 @@ db.potions.insert([
     {
         id: "Love Potion" + new Date().toLocaleString(),
         name: "Love Potion",
-        desc: "With camelia flowers, oak resine and good vibes.",
+        desc: "With camelia flowers, oak resin and good vibes.",
         price: 120,
         img: "https://www.toutsurlevin.ca/wp-content/uploads/2020/04/Potion-magique-Tout-sur-le-Vin.jpg",
         created: new Date().toLocaleString()
