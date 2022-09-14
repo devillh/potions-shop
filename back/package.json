@@ -7,8 +7,7 @@
     "dev": "ts-node src/index.ts",
     "lint": "eslint -c .eslintrc.json --ext .ts src/*",
     "build": "rm -rf dist/ && tsc",
-    "start": "node dist/src/index.js",
-    "test": "nyc mocha -r ts-node/register tests/**/*.test.ts --exit"
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +15,6 @@
   },
   "keywords": [
     "api",
-    "starter",
     "express",
     "typescript"
   ],

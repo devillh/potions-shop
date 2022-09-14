@@ -38,6 +38,15 @@ services:
       - 5000:5000
     networks:
       - db_link
+  front-end:
+    build:
+      context: ./front/
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 5001:80
+    networks:
+      - db_link
 
 volumes:
   mongodb_data:
