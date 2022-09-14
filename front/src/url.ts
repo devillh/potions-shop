@@ -1,1 +1,1 @@
-export const url: string = window.location.protocol + "//" + window.location.hostname + ":5000";
+export const url: string = window.location.protocol + "//" + window.location.hostname + "/api";
