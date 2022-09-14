@@ -39,9 +39,6 @@ function PotionCard(potion) {
                         </Button>
                     </div>
                     <div>
-                        <IconButton size="small" aria-label="Edit this potion" disabled>
-                            <EditIcon />
-                        </IconButton>
                         <IconButton size="small" aria-label="Delete this potion" onClick={() => potion.setToDelete(potion.nb)}>
                             <DeleteIcon />
                         </IconButton>

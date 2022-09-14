@@ -4,7 +4,7 @@ import Home from "./Home/Home";
 import { useState } from "react";
 
 function App() {
-    const [connected, setConnected] = useState(true);
+    const [connected, setConnected] = useState(false);
 
     return (
         <div>

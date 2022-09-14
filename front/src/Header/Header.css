@@ -35,14 +35,14 @@
 
 
 /* Style for tablets' screen */
-@media screen and (min-width: 425px) {
+@media only screen and (min-width: 425px) {
     .spacing-items {
         padding: 0 2vw;
     }
 }
 
 /* Style for computers' screen */
-@media screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) {
     .welcome {
         margin: -1.5vh 0 0 2vw;
         line-height: 10vh;

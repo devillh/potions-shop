@@ -7,32 +7,28 @@ import React, {useState} from "react";
 import axios from "axios";
 import CreatePotion from "../CreatePotion/CreatePotion";
 import UpdatePotion from "../UpdatePotion/UpdatePotion";
+import {url} from "../url.ts";
 
 function Home() {
     const [getLoop, setGetLoop] = useState(0);
     const [toDelete, setToDelete] = useState(-1);
-    const [err, setErr] = useState(false);
     const [potions, setPotions] = useState([]);
 
     const handleSubmit = () => {
-        console.log(potions)
-        console.log(toDelete)
         axios
-            .delete("http://127.0.0.1:5000/potions", {data: {id : potions[toDelete].id}}
+            .delete(url + "/potions", {data: {id : potions[toDelete].id}}
                 )
             .then(async (res) => {
                 if (res.status === 200) {
                     await getPotions(true);
                 }
-                else
-                    setErr(true);
             })
     };
 
     const getPotions = async (refresh) => {
         if (getLoop === 0 || refresh)
             await axios
-                .get("http://127.0.0.1:5000/potions")
+                .get(url + "/potions")
                 .then(res => {
                     setGetLoop(1);
                     if (res.status === 200) {
@@ -41,33 +37,44 @@ function Home() {
                 })
     };
 
+    // Check if there is a potion to delete
     if (toDelete > -1) {
         handleSubmit();
         setToDelete(-1);
     }
+
     getPotions().then();
     return (
         <div>
             < Header />
             <div className="background-home">
-                <CreatePotion />
+                <Grid container spacing={1} direction="row" >
+                    <Grid className="col">
+                        <CreatePotion />
+                    </Grid>
+                    <Grid className="col">
+                        <UpdatePotion allPotions={ potions }/>
+                    </Grid>
+                </Grid>
                 <div className="title">
                     <h1>
                         Potions list
                     </h1>
                 </div>
-                <Grid container id="all-cards" spacing={1} >
+                <Grid container className="center-items" spacing={1} >
                     { potions.map((potion, index) => (
-                    <Grid className="card" key={index}>
-                        <PotionCard nb={index} name={potion.name} price={potion.price} desc={potion.desc} img={potion.img} setToDelete={setToDelete}/>
-                    </Grid>
+                        <Grid className="card" key={index}>
+                            <PotionCard nb={index}
+                                        name={potion.name}
+                                        price={potion.price}
+                                        desc={potion.desc}
+                                        img={potion.img}
+                                        setToDelete={setToDelete}/>
+                        </Grid>
                     ))}
                 </Grid>
-                {/*<UpdatePotion allPotions={ potions }/>*/}
             </div>
-            <div>
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 }

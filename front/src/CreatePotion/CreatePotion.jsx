@@ -3,13 +3,13 @@ import axios from "axios";
 import {Grid} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import {url} from "../url.ts";
 
 function CreatePotion() {
     const [newPotion, setNewPotion] = useState({name: "", desc: "", price: 0, img: ""});
     const [errLink, setErrLink] = useState(false);
     const [errSizeName, setErrSizeName] = useState(false);
     const [err, setErr] = useState(false);
-
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;
@@ -39,7 +39,7 @@ function CreatePotion() {
         }
         else {
             await axios
-                .post("http://127.0.0.1:5000/potions", {
+                .post(url + "/potions", {
                     name: newPotion.name,
                     price: newPotion.price,
                     img: newPotion.img,
@@ -71,7 +71,7 @@ function CreatePotion() {
                 </div>
                 <Grid container alignItems="center" justify="center" className="center-items">
                     <Grid item>
-                        <div className="form-bg small-input">
+                        <div className="form-bg create-input">
                             <TextField
                                 variant="filled"
                                 id="name"
@@ -85,7 +85,7 @@ function CreatePotion() {
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="form-bg small-input">
+                        <div className="form-bg create-input">
                             <TextField
                                 variant="filled"
                                 id="price"
@@ -99,7 +99,7 @@ function CreatePotion() {
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="form-bg small-input">
+                        <div className="form-bg create-input">
                             <TextField
                                 variant="filled"
                                 id="img"
@@ -113,7 +113,7 @@ function CreatePotion() {
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="form-bg small-input" id="large-input-create">
+                        <div className="form-bg edit-input">
                             <TextField
                                 variant="filled"
                                 id="desc"
@@ -128,7 +128,7 @@ function CreatePotion() {
                             />
                         </div>
                     </Grid>
-                    <div className="small-input center-items">
+                    <div className="edit-input center-items">
                         <Button size="large" variant="contained" color="primary" type="submit" disabled={ errLink || errSizeName }>
                             Create
                         </Button>

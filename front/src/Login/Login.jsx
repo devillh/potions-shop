@@ -3,10 +3,12 @@ import React from 'react';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import {url} from "../url.ts";
 
 import { useState } from "react";
 
 function Login({ setConnected }) {
+    const [avoidingLoop, setAvoidingLoop] = useState(false);
     const [users, setUsers] = useState([]);
     const [err, setErr] = useState(false);
     const [user, setUser] = useState({ email: "", pwd: "" });
@@ -17,28 +19,38 @@ function Login({ setConnected }) {
     };
 
     const handleSubmit = (e) => {
-        axios
-            .get("http://127.0.0.1:5000/users",
-                { responseType: "json" })
-            .then(res => {
-                setUsers(res.data);
-            });
-
         e.preventDefault();
 
-        if (!checkUser())
+        if (!checkUser()) {
             setErr(true);
+        }
         else
             setConnected(true);
     };
 
+    const getUsers = async () => {
+        if (!avoidingLoop) {
+            await axios
+                .get(url + "/users",
+                    { responseType: "json" })
+                .then(res => {
+                    setUsers(res.data);
+                });
+            setAvoidingLoop(true);
+        }
+
+    }
+
     const checkUser = () => {
         for(let index = 0; index < users.length; index++) {
-            if (user.email === users[index].email && user.pwd === users[index].pwd)
+            if (user.email === users[index].email && user.pwd === users[index].pwd) {
                 return true;
+            }
         }
         return false;
     };
+
+    getUsers().then();
 
     return (
         <div className="row">
@@ -56,7 +68,7 @@ function Login({ setConnected }) {
                             <h3>Connection</h3>
                             { err && <span className="error">Wrong credentials, try again please.</span> }
                         </div>
-                        <div className="field">
+                        <div className="form-bg">
                             <TextField
                                 variant="filled"
                                 id="username"
@@ -67,7 +79,7 @@ function Login({ setConnected }) {
                                 onChange={ handleInputChange }
                         />
                         </div>
-                        <div className="field">
+                        <div className="form-bg">
                             <TextField
                                 variant="filled"
                                 id="pwd"

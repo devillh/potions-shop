@@ -3,6 +3,7 @@ import axios from "axios";
 import {Grid} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import {url} from "../url.ts";
 
 function UpdatePotion({allPotions}) {
     const [editedPotion, setEditedPotion] = useState({index: 0, name: "", desc: "", price: 0, img: ""});
@@ -19,7 +20,7 @@ function UpdatePotion({allPotions}) {
         const potion = editPotion(index);
         console.log(potion);
         await axios
-            .put("http://" + window.location.hostname + ":5000/potions", {
+            .put(url + "/potions", {
                 id: potion.id,
                 name: potion.name,
                 price: potion.price,
@@ -59,7 +60,7 @@ function UpdatePotion({allPotions}) {
                 </div>
                 <Grid container alignItems="center" justify="center" className="center-items">
                     <Grid item>
-                        <div className="form-bg small-input">
+                        <div className="form-bg edit-input">
                             <TextField
                                 variant="filled"
                                 id="index"
@@ -73,7 +74,7 @@ function UpdatePotion({allPotions}) {
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="form-bg small-input">
+                        <div className="form-bg edit-input">
                             <TextField
                                 variant="filled"
                                 id="name"
@@ -87,7 +88,7 @@ function UpdatePotion({allPotions}) {
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="form-bg small-input">
+                        <div className="form-bg edit-input">
                             <TextField
                                 variant="filled"
                                 id="price"
@@ -103,7 +104,7 @@ function UpdatePotion({allPotions}) {
                 </Grid>
                 <Grid container alignItems="center" justify="center" className="center-items">
                     <Grid item>
-                        <div className="form-bg small-input">
+                        <div className="form-bg edit-input">
                             <TextField
                                 variant="filled"
                                 id="img"
@@ -117,7 +118,7 @@ function UpdatePotion({allPotions}) {
                         </div>
                     </Grid>
                     <Grid item>
-                        <div className="form-bg small-input" id="large-input-edit">
+                        <div className="form-bg edit-input">
                             <TextField
                                 variant="filled"
                                 id="desc"
@@ -132,7 +133,7 @@ function UpdatePotion({allPotions}) {
                             />
                         </div>
                     </Grid>
-                    <div className="small-input center-items">
+                    <div className="edit-input center-items">
                         <Button size="large" variant="contained" color="primary" type="submit">
                             Update
                         </Button>
